@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>가락명품부동산</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/ui.css"/>
+    <script type="text/javascript" src="/static/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/static/slick/slick.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $(".gnb > li > a").on('mouseover focusin',function(){
+                $(".gnb > li").removeClass("on");
+                $(this).parent("li").addClass("on");
+                $(".submenu").hide();
+			    $(this).next(".submenu").show();
+        });
+        
+        $('.floor-wrap > ul > li ').on('click',function(){
+            $(".floor-wrap > ul > li").removeClass("on");
+            $(this).addClass("on");
+        });
+
+        $(".header, .gnb").on('mouseleave',function(){
+                $(".gnb > li").removeClass("on");
+                $(".submenu").hide();
+        });
+    });
+    </script>
+   
+</head>
+<body>
+    <div class="wrap">
+        <div class="gnb-wrap">
+            <div class="header">
+                    <div class="logo" onclick="window.location='main.html'">
+                    <span class="logo1">가락</span>
+                    <div class="logo2">명품</div>
+                    <span class="logo3">공인중개사</span>
+                    <span class="logo4">412-0090</span>
+                </div>
+                <ul class="gnb">
+                    <li><a href="apart_list.html">아파트</a></li>
+                    <li><a>상가</a></li>
+                    <li><a>조감도/평면도</a>
+                        <div class="submenu">
+                            <ul style="width:120px;text-align:center;">
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a href="birdView.html">조감도</a></li>
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a href="floorView.html">평면도</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a>게시판</a>
+                        <div class="submenu" style="margin-left:-45px;">
+                            <ul style="width:150px;text-align:center;">
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a>매도/매수의뢰</a></li>
+                                <li style="font-size:15px;padding:10px 0px;float:none;" ><a>질문과 답변</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="introduce.html">찾아오는 길</a></li>
+                </ul>
+            </div>
+        </div>
+        <style>
+        .main-wrap .board-wrap{width:100%;min-width:1100px;height:auto;min-height:600px;}
+        .main-wrap .board-wrap .title{font-size:36px;font-weight:bold;min-width:1050px;width:80%;padding:30px 0;border-bottom:1px solid #bdbdbd;text-align:center;display:inline-block;}
+        .main-wrap .board-wrap .write-wrap{width:80%;height:300px;min-width:1050px;display:inline-block;}
+        .main-wrap .board-wrap .write-wrap .write-table{width:100%;height:auto;margin-top:20px;border:1px solid #bdbdbd;}
+        .main-wrap .board-wrap .write-wrap .write-table .td{width:100%;padding:5px 0;}
+        </style>
+        <div class="main-wrap">
+           <div class="board-wrap">
+                <div class="title">질문과 답변</div>
+                <div class="write-wrap">
+                    <table class="write-table">
+                        <colgroup>
+                            <col width="20%"/>
+                            <col/>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td><div class="td">이름</div></td>
+                                <td><div class="td"></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+           </div>
+        </div>
+         <div class="footer">
+            <div class="linked-wrap">
+                <div class="linked-box">
+                    <a href="https://www.hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index.xml" target="blank"><img src="/static/images/footer1.jpg"/></a>
+                    <a href="http://www.minwon.go.kr/main?a=AA020InfoMainApp" target="blank"><img src="/static/images/footer2.png"/></a>
+                    <a href="http://rt.molit.go.kr/" target="blank"><img src="/static/images/footer3.jpg"/></a>
+                </div>
+            </div>
+            <div style="width:1100px;margin-bottom:20px;display:inline-block;text-align:center;">
+                <div class="logo" style="float:none;display:inline-block;cursor:auto;">
+                    <span class="logo1" style="color:#fff;">가락</span>
+                    <div class="logo2" style="background-color:white;color:#4c4c4c;">명품</div>
+                    <span class="logo3"  style="color:#fff;">공인중개사</span>
+                    <span class="logo4"  style="color:#4c4c4c;background-color:#fff;">412-0090</span>
+                </div>
+            </div>
+            <div class="footer-wrap">
+                <span>상호명 : 가락명품공인중개사</span><div class="separator"></div>
+                <span>대표자 : 정미희</span><div class="separator"></div>
+                <span>사업자등록번호 : 213-10-61287</span><div class="separator"></div>
+                <span>부동산등록번호 : 11710-2015-00091</span><br/><br/>
+                <span>주소 : 서울특별시 송파구 송파대로 345, 001A동1015호(가락동,헬리오시티상가)</span><div class="separator"></div>
+                <span>전화번호 : 02-412-0090</span>
+                <br/><br/>
+                <span>Copyright © 2019 가락명품공인중개사 All rights reserved.</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

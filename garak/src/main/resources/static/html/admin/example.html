@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Insert Title</title>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        var timeOut = setTimeout(function(){alert("페이지이동");},3000) //3초 예시
+        $(".main-wrap").on('click',function(){
+            clearTimeout(timeOut); // 이전에 걸려있던 타임아웃 제거
+            timeOut = setTimeout(function(){alert("페이지이동");},3000) //3초 예시
+        });
+    });
+    </script>   
+</head>
+<body>
+    <div class="main-wrap" style="width:100vw;height:100vh;"></div>
+</body>
+</html>
+

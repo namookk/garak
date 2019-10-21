@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>가락명품부동산</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <style>
+    *{padding:0;margin:0;}
+    body{}
+    .wrap{width:100%;min-width:1500px;height:100vh;min-height:800px;background-color:#efefef;display:flex;justify-content: center;align-items: center;}
+    .wrap a{color:#fff;text-decoration: none;}
+    .wrap .header{width:100%;min-width:1500px;height:65px;position:fixed;top:0;background-color:#1198C5;}
+    .wrap .header .logo{width:220px;height:100%;float:left;text-align:center;background-color:rgba(0,0,0,0.1);cursor:pointer;}
+    .logo .logo1{font-family: 'Nanum Pen Script', cursive;font-size:19px;color:#fff;position:relative;top:13px;left:-5px;}
+    .logo .logo2{font-family: 'Nanum Gothic', sans-serif; font-size:25px;padding:5px;position:relative;color:#1198C5;left:-5px;display:inline-block;background-color:#fff;top:13px;border-radius:5px;}
+    .logo .logo3{font-family: 'Nanum Gothic', sans-serif; font-size:14px;font-weight:bold;position:relative;color:#fff;left:-5px;}
+    .logo .logo4{font-family: 'Nanum Gothic', sans-serif; font-size:12px;font-weight:bold;top:-9px;position:relative;left:42px;background-color:#fff;color:#1198C5;padding:1px 4px;border-radius:3px;}
+    .header ul{width:auto;list-style: none;}
+    .header ul li{width:150px;font-size:13px;font-weight:550;color:#fff;text-align:center;float:left;padding:20px 0px;cursor:pointer;opacity:0.7;}
+    .header ul li.on{opacity:1;}
+    .header ul li:hover{opacity:1;}
+    .header .logout{float:right;font-size:13px;font-weight:550;color:#fff;padding:20px 0;margin-right:50px;cursor:pointer;}
+    .wrap .left-menu{width:220px;height:100vh;position:fixed;top:65px;background-color:#354052;left:0;}
+    .wrap .left-menu .sub-title{width:100%;padding:4px 0px;margin-left:27px;font-size:13px;margin-top:12px;color:#fff;opacity:0.5;}
+    .wrap .left-menu .sub-depth-wrap{width:100%;height:auto;margin-left:45px;}
+    .wrap .left-menu .sub-depth-wrap li{width:100%;padding:4px 0px;font-size:13px;color:#fff;position:relative;}
+    .wrap .left-menu .sub-depth-wrap li a{cursor:pointer;opacity:0.5;}
+    .wrap .left-menu .sub-depth-wrap li .sub-depth-box{width:0px;height:24px;position:absolute;top:0;left:-48px;transition:all .2s ease-in-out; -webkit-transition:all .2s ease-in-out;background-color:rgba(0,0,0,0.3);z-index:-1;border-right:3px solid #1198C5;}
+    .wrap .left-menu .sub-depth-wrap li .sub-depth-box.on{width:100%;}
+    .wrap .left-menu .sub-depth-wrap li .sub-depth-box.active{width:100%;}
+    .wrap .left-menu .sub-depth-wrap li a.active{opacity:1;}
+    .wrap .left-menu .sub-depth-wrap li a.on{opacity:1;}
+    .wrap .main-wrap{width:calc(100% - 220px);min-width:1280px;height:1200px;background-color:#efefef;position:fixed;top:65px;left:220px;}
+    .wrap .main-wrap .main{width:96%;height:820px;background-color:#fff;margin-left:28px;box-shadow:5px 5px #dbdbdb;border:1px solid #bdbdbd;border-top:0;}
+    .wrap .main-wrap .tab{width:96%;height:30px;margin-left:28px;margin-top:20px;}
+    .wrap .main-wrap .tab ul{width:max-content;height:100%;list-style: none;box-shadow:5px 0px #dbdbdb;}
+    .wrap .main-wrap .tab ul li{min-width:90px;padding:6px 10px;font-size:12px;padding-right:18px;background-color:#fff;position:relative;float:left;border:1px solid #bdbdbd;cursor:pointer;}
+    .wrap .main-wrap .tab ul li.on{border-bottom:1px solid #fff;}
+    .wrap .main-wrap .tab ul li .xBtn{font-size:18px;position:absolute;right:5px;top:0;color:#bdbdbd;}
+    .wrap .main-wrap .tab ul li .xBtn:hover{cursor:pointer;color:black}
+    .wrap .main-wrap .main .content-wrap{width:100%;height:100%;display:none;overflow-y:auto;}
+    .wrap .main-wrap .main .content-wrap.on{display:block;}
+    </style>
+    <script type="text/javascript" src="/static/js/jquery-1.11.3.min.js"></script>    
+    <script>
+        $(document).ready(function(){
+            $(".sub-depth-wrap > li > a").on('mouseover focusin',function(){
+                $('.wrap .left-menu .sub-depth-wrap li a').removeClass("on");
+                $(this).addClass("on");
+                $(".wrap .left-menu .sub-depth-wrap li .sub-depth-box").removeClass("on");
+                $(this).siblings("div").addClass("on");
+            });
+
+            $(".sub-depth-wrap li a").on('mouseleave',function(){
+                $('.wrap .left-menu .sub-depth-wrap li a').removeClass("on");
+                $(".wrap .left-menu .sub-depth-wrap li .sub-depth-box").removeClass("on");
+            });
+
+           $(".sub-depth-wrap > li > a").on("click",function(){
+               $('.sub-depth-wrap > li > a').removeClass("active");
+               $(this).addClass("active");
+               $('.sub-depth-wrap > li > div').removeClass("active");
+               $(this).siblings("div").addClass("active");
+
+               var menuCd = $(this).attr("id");
+               var menuNm = $(this).html();
+               if($('#tab-'+menuCd).length > 0){     //이미 탭이 열려있음
+                   $('.tab > ul > li').removeClass("on");
+                   $('#tab-'+menuCd).addClass("on");
+                   $('.content-wrap').removeClass("on");
+                   $('#content-'+menuCd).addClass("on");
+               }else{                               //탭이 안열려있음
+                $('.tab > ul > li').removeClass("on");
+                var html ='<div class="content-wrap on" id="content-'+menuCd+'">';
+                html += '<!DOCTYPE html>';
+                html += '    <html>';
+                html += '    <head>';
+                html += '    </head>';
+                html += '    <body>';
+                html +=         menuCd;
+                html += '    </body>';
+                html += '    </html>';
+                html += ' </div>';
+                $('.content-wrap').removeClass("on");
+                $('.main').append(html);
+                html = ' <li id="tab-'+menuCd+'" class="on" onclick="fnOpen(\''+menuCd+'\');">'+menuNm+'<span class="xBtn" onclick="fnClose(\''+menuCd+'\')">x</span></li>';
+                $('.tab > ul').append(html);
+               }
+           });
+        });
+        function fnOpen(menuCd){
+            
+            if($('#tab-'+menuCd).length > 0){
+                $('.tab > ul > li').removeClass("on");
+                $('#tab-'+menuCd).addClass("on");
+                $('.content-wrap').removeClass("on");
+                $('#content-'+menuCd).addClass("on");
+            }
+        }
+        function fnClose(menuCd){
+            if($('#tab-'+menuCd).hasClass("on")){
+                $('.tab > ul > li').removeClass("on");
+                $('#tab-'+menuCd).remove();
+                $('.tab > ul > li:nth-child(1)').addClass("on");
+                $('.content-wrap').removeClass("on");
+                $('#content-'+menuCd).remove();
+                $('.content-wrap:nth-child(1)').addClass("on");
+            }else{
+                $('#tab-'+menuCd).remove();
+                $('#content-'+menuCd).remove();
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="logo" onclick="fnOpen('main');">
+                    <span class="logo1">가락</span>
+                    <div class="logo2">명품</div>
+                    <span class="logo3">공인중개사</span><br/>
+                    <span class="logo4">412-0090</span>
+            </div>
+            <ul>
+                <li id="AA" class="on"><a>매물관리</a></li>
+                <li id="BB" ><a>메인관리</a></li>
+                <li id="CC" ><a>화면관리</a></li>
+                <li id="DD" ><a>커뮤니티관리</a></li>
+                <li id="EE" ><a>통계</a></li>
+            </ul>
+            <span class="logout">logout</span>
+        </div>
+        <div class="left-menu">
+            <p class="sub-title"><a>매물관리</a></p>
+            <ul class="sub-depth-wrap">
+                <li>
+                    <a class="active" id="AA0101">매물리스트</a>
+                    <div class="sub-depth-box active"></div>
+                </li>
+                <li>
+                    <a id="AA0102">매물등록</a>
+                    <div class="sub-depth-box"></div>
+                </li>
+                <li>
+                    <a id="AA0103">매물일괄등록</a>
+                    <div class="sub-depth-box"></div>
+                </li>
+            </ul>
+            <p class="sub-title"><a>태그관리</a></p>
+            <ul class="sub-depth-wrap">
+                <li>
+                    <a id="AA0201">추천매물리스트</a>
+                    <div class="sub-depth-box"></div>
+                </li>
+                <li>
+                    <a id="AA0202">인기매물리스트</a>
+                    <div class="sub-depth-box"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="main-wrap">
+            <div class="tab">
+                <ul>
+                    <li id="tab-main" class="on" onclick="fnOpen('main');">메인</li>
+                    <li id="tab-AA0101"  onclick="fnOpen('AA0101');">매물리스트<span class="xBtn" onclick="fnClose('AA0101')">x</span></li>
+                    <li id="tab-AA0102"  onclick="fnOpen('AA0102');">매물등록<span class="xBtn" onclick="fnClose('AA0102')">x</span></li>
+                    <li id="tab-AA0103"  onclick="fnOpen('AA0103');">매물일괄등록<span class="xBtn" onclick="fnClose('AA0103')">x</span></li>
+                </ul>
+            </div>
+            <div class="main">
+                <div class="content-wrap on" id="content-main">
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                    </head>
+                    <body>
+                        <div style="height:1100px;">메인</div>
+                    </body>
+                    </html>
+                </div>
+                <div class="content-wrap" id="content-AA0101">
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                    </head>
+                    <body>
+                        AA0101
+                    </body>
+                    </html>
+                </div>
+                <div class="content-wrap" id="content-AA0102">
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                    </head>
+                    <body>
+                        AA0102
+                    </body>
+                    </html>
+                </div>
+                <div class="content-wrap" id="content-AA0103">
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                    </head>
+                    <body>
+                        AA0103
+                    </body>
+                    </html>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

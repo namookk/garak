@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>가락명품부동산</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/ui.css"/>
+    <script type="text/javascript" src="/static/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/static/slick/slick.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easeScroll.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=67zopzwnlj&submodules=geocoder"></script>
+    <script>
+        
+            $(document).ready(function(){
+
+                
+                var scrollFl = false;
+                $('.recent-wrap').slick({
+                dots: true,
+                arrows : false,
+                infinite: false,
+                speed: 500,
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                autoplay: false,
+                });
+                var letitude = 37.497300;
+                var longtitude = 127.107704;
+                
+                // var mapOptions = {
+                //     center: new naver.maps.LatLng(letitude, longtitude),
+                //     zoom: 12,
+                //     minZoom: 12,
+                //     maxZoom: 12
+                
+
+                // var map = new naver.maps.Map('map', mapOptions); */
+                var HOME_PATH = window.HOME_PATH || '.';
+                var MARKER_SPRITE_X_OFFSET = 29,
+                    MARKER_SPRITE_Y_OFFSET = 50,
+                    MARKER_SPRITE_POSITION = {
+                        "A0": [0, 0],
+                        "B0": [MARKER_SPRITE_X_OFFSET, 0],
+                        "C0": [MARKER_SPRITE_X_OFFSET*2, 0],
+                        "D0": [MARKER_SPRITE_X_OFFSET*3, 0],
+                        "E0": [MARKER_SPRITE_X_OFFSET*4, 0],
+                        "F0": [MARKER_SPRITE_X_OFFSET*5, 0],
+                        "G0": [MARKER_SPRITE_X_OFFSET*6, 0],
+                        "H0": [MARKER_SPRITE_X_OFFSET*7, 0],
+                        "I0": [MARKER_SPRITE_X_OFFSET*8, 0],
+
+                        "A1": [0, MARKER_SPRITE_Y_OFFSET],
+                        "B1": [MARKER_SPRITE_X_OFFSET, MARKER_SPRITE_Y_OFFSET],
+                        "C1": [MARKER_SPRITE_X_OFFSET*2, MARKER_SPRITE_Y_OFFSET],
+                        "D1": [MARKER_SPRITE_X_OFFSET*3, MARKER_SPRITE_Y_OFFSET],
+                        "E1": [MARKER_SPRITE_X_OFFSET*4, MARKER_SPRITE_Y_OFFSET],
+                        "F1": [MARKER_SPRITE_X_OFFSET*5, MARKER_SPRITE_Y_OFFSET],
+                        "G1": [MARKER_SPRITE_X_OFFSET*6, MARKER_SPRITE_Y_OFFSET],
+                        "H1": [MARKER_SPRITE_X_OFFSET*7, MARKER_SPRITE_Y_OFFSET],
+                        "I1": [MARKER_SPRITE_X_OFFSET*8, MARKER_SPRITE_Y_OFFSET],
+
+                        "A2": [0, MARKER_SPRITE_Y_OFFSET*2],
+                        "B2": [MARKER_SPRITE_X_OFFSET, MARKER_SPRITE_Y_OFFSET*2],
+                        "C2": [MARKER_SPRITE_X_OFFSET*2, MARKER_SPRITE_Y_OFFSET*2],
+                        "D2": [MARKER_SPRITE_X_OFFSET*3, MARKER_SPRITE_Y_OFFSET*2],
+                        "E2": [MARKER_SPRITE_X_OFFSET*4, MARKER_SPRITE_Y_OFFSET*2],
+                        "F2": [MARKER_SPRITE_X_OFFSET*5, MARKER_SPRITE_Y_OFFSET*2],
+                        "G2": [MARKER_SPRITE_X_OFFSET*6, MARKER_SPRITE_Y_OFFSET*2],
+                        "H2": [MARKER_SPRITE_X_OFFSET*7, MARKER_SPRITE_Y_OFFSET*2],
+                        "I2": [MARKER_SPRITE_X_OFFSET*8, MARKER_SPRITE_Y_OFFSET*2]
+                    };
+
+                var map = new naver.maps.Map('map', {
+                    center: new naver.maps.LatLng(letitude, longtitude),
+                    zoom: 10
+                });
+
+                var bounds = map.getBounds(),
+                    southWest = bounds.getSW(),
+                    northEast = bounds.getNE(),
+                    lngSpan = northEast.lng() - southWest.lng(),
+                    latSpan = northEast.lat() - southWest.lat();
+
+                var markers = [],
+                    infoWindows = [];
+
+                for (var key in MARKER_SPRITE_POSITION) {
+
+                    var position = new naver.maps.LatLng(
+                        southWest.lat() + latSpan * Math.random(),
+                        southWest.lng() + lngSpan * Math.random());
+
+                    var marker = new naver.maps.Marker({
+                        map: map,
+                        position: position,
+                        title: key,
+                        icon: {
+                            url: HOME_PATH +'/img/example/sp_pins_spot_v3.png',
+                            size: new naver.maps.Size(24, 37),
+                            anchor: new naver.maps.Point(12, 37),
+                            origin: new naver.maps.Point(MARKER_SPRITE_POSITION[key][0], MARKER_SPRITE_POSITION[key][1])
+                        },
+                        zIndex: 100
+                    });
+
+                    var infoWindow = new naver.maps.InfoWindow({
+                        content: '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'+ key.substr(0, 1) +'"</b>.</div>'
+                    });
+
+                    markers.push(marker);
+                    infoWindows.push(infoWindow);
+                };
+
+                naver.maps.Event.addListener(map, 'idle', function() {
+                    updateMarkers(map, markers);
+                });
+
+                function updateMarkers(map, markers) {
+
+                    var mapBounds = map.getBounds();
+                    var marker, position;
+
+                    for (var i = 0; i < markers.length; i++) {
+
+                        marker = markers[i]
+                        position = marker.getPosition();
+
+                        if (mapBounds.hasLatLng(position)) {
+                            showMarker(map, marker);
+                        } else {
+                            hideMarker(map, marker);
+                        }
+                    }
+                }
+
+                function showMarker(map, marker) {
+
+                    if (marker.setMap()) return;
+                    marker.setMap(map);
+                }
+
+                function hideMarker(map, marker) {
+
+                    if (!marker.setMap()) return;
+                    marker.setMap(null);
+                }
+
+                // 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+                function getClickHandler(seq) {
+                    return function(e) {
+                        var marker = markers[seq],
+                            infoWindow = infoWindows[seq];
+
+                        if (infoWindow.getMap()) {
+                            infoWindow.close();
+                        } else {
+                            infoWindow.open(map, marker);
+                        }
+                    }
+                }
+
+                for (var i=0, ii=markers.length; i<ii; i++) {
+                    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+                }
+            });
+            
+    </script>
+    <script>
+    $(document).ready(function() {
+        $(".gnb > li > a").on('mouseover focusin',function(){
+                $(".gnb > li").removeClass("on");
+                $(this).parent("li").addClass("on");
+                $(".submenu").hide();
+			    $(this).next(".submenu").show();
+        });
+        
+        $('.floor-wrap > ul > li ').on('click',function(){
+            $(".floor-wrap > ul > li").removeClass("on");
+            $(this).addClass("on");
+        });
+
+        $(".header, .gnb").on('mouseleave',function(){
+                $(".gnb > li").removeClass("on");
+                $(".submenu").hide();
+        });
+        $('.floor-info').animate({"opacity":"1"},500);
+        $('.floor-desc').animate({"opacity":"1"},500);
+        $('.notice-wrap').animate({"opacity":"1"},500);
+    });
+    </script>
+   
+</head>
+<body>
+    <div class="wrap">
+        <div class="gnb-wrap">
+            <div class="header">
+                    <div class="logo" onclick="window.location='main.html'">
+                    <span class="logo1">가락</span>
+                    <div class="logo2">명품</div>
+                    <span class="logo3">공인중개사</span>
+                    <span class="logo4">412-0090</span>
+                </div>
+                <ul class="gnb">
+                    <li><a href="apart_list.html">아파트</a></li>
+                    <li><a>상가</a></li>
+                    <li><a>조감도/평면도</a>
+                        <div class="submenu">
+                            <ul style="width:120px;text-align:center;">
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a href="birdView.html">조감도</a></li>
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a href="floorView.html">평면도</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a>게시판</a>
+                        <div class="submenu" style="margin-left:-45px;">
+                            <ul style="width:150px;text-align:center;">
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a>매도/매수의뢰</a></li>
+                                <li style="font-size:15px;padding:10px 0px;float:none;" ><a>질문과 답변</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="introduce.html">찾아오는 길</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-wrap">
+            <div class="floor-wrap">
+                <ul>
+                    <li class="on">39A</li><li>39B</li><li>39C</li><li>39D</li><li>49A</li><li>49B</li><li>49C</li><li>49D</li><li>59</li>
+                    <li>84A</li><li>84B</li><li>84C</li><li>84D</li><li>84E</li><li>84F</li><li>84G</li><li>84H</li><li>84I</li>
+                    <li>84J<sub>1</sub></li><li>84J<sub>2</sub></li> <li>84K</li><li>84L</li><li>99</li><li>110A</li><li>110B</li><li>130</li><li>150A</li>
+                </ul>
+                <span style="width:100%;font-size:30px;font-weight:bold;text-align:left;margin:20px;display:block;">주택형</span>
+                <div class="floor-info">
+                    <div class="floor-info-title">
+                        39A
+                        <span class="sede1">811세대</span>
+                        <span class="sede2">조 합 113세대</span>
+                        <div class="floor-info-desc">
+                            <table>
+                                <tr>
+                                    <td>전 용 면 적</td>
+                                    <td>39.17㎡</td>
+                                </tr>
+                                <tr>
+                                    <td>주 거 공 용 면 적</td>
+                                    <td>22.27㎡</td>
+                                </tr>
+                                <tr>
+                                    <td>공 급 면 적</td>
+                                    <td>61.44㎡</td>
+                                </tr>
+                                <tr>
+                                    <td>기 타 공 용 면 적</td>
+                                    <td>28.98㎡</td>
+                                </tr>
+                                <tr>
+                                    <td>계 약 면 적</td>
+                                    <td>90.42㎡</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div style="float:left;width:50%;">
+                    <span class="floor-desc" style="width:100%;font-size:20px;color:#949494;font-weight:bold;text-align:left;margin:30px;display:block;">| 확장형 |</span>
+                    <img class="floor-desc" src="/static/images/floor/39a_1.jpg"/>
+                </div>
+                <div style="float:left;width:50%;">
+                    <span class="floor-desc" style="width:100%;font-size:20px;color:#949494;font-weight:bold;text-align:left;margin:30px;display:block;">| 기본형 |</span>
+                    <img class="floor-desc" src="/static/images/floor/39a_2.jpg"/>
+                </div>
+            </div>
+            <div style="width:1100px;height:650px;display:inline-block;" id="map"></div>
+            <div class="notice-wrap">
+                <span class="notice-icon">!</span>
+                <span class="notice">페이지상에 표시된 평면도, 배치도, 면적 및 도면 내용은 소비자의 이해를 돕기 위한 것으로 실제 시공시 다소 변경될 수 있으며 <br/>마감제 컬러 및 창호 및 난간의 형태, 분할, 재료, 색상, 개페방향 등은 실제 시공시 변경 될 수 있습니다.</span>
+                <br/><br/>
+                <span class="notice-icon">!</span>
+                <span class="notice">확장형 세대의 비확장형 발코니 외부쪽 벽체(대피공간,발코니 등)에는 단열재 및 마감재가 설치됨에 따라 실제사용 면적이 줄어들 수 있습니다.</span>
+                <br/><br/>
+                <span class="notice-icon">!</span>
+                <span class="notice">인접세대 및 동일세대 내 각 부위별 확장여부에 따라 단열재 설치로 인한 벽체 돌출 및 실사용 면적의 증감이 있을 수 있습니다.</span>
+            </div>
+        </div>
+         <div class="footer">
+            <div class="linked-wrap">
+                <div class="linked-box">
+                    <a href="https://www.hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index.xml" target="blank"><img src="/static/images/footer1.jpg"/></a>
+                    <a href="http://www.minwon.go.kr/main?a=AA020InfoMainApp" target="blank"><img src="/static/images/footer2.png"/></a>
+                    <a href="http://rt.molit.go.kr/" target="blank"><img src="/static/images/footer3.jpg"/></a>
+                </div>
+            </div>
+            <div style="width:1100px;margin-bottom:20px;display:inline-block;text-align:center;">
+                <div class="logo" style="float:none;display:inline-block;cursor:auto;">
+                    <span class="logo1" style="color:#fff;">가락</span>
+                    <div class="logo2" style="background-color:white;color:#4c4c4c;">명품</div>
+                    <span class="logo3"  style="color:#fff;">공인중개사</span>
+                    <span class="logo4"  style="color:#4c4c4c;background-color:#fff;">412-0090</span>
+                </div>
+            </div>
+            <div class="footer-wrap">
+                <span>상호명 : 가락명품공인중개사</span><div class="separator"></div>
+                <span>대표자 : 정미희</span><div class="separator"></div>
+                <span>사업자등록번호 : 213-10-61287</span><div class="separator"></div>
+                <span>부동산등록번호 : 11710-2015-00091</span><br/><br/>
+                <span>주소 : 서울특별시 송파구 송파대로 345, 001A동1015호(가락동,헬리오시티상가)</span><div class="separator"></div>
+                <span>전화번호 : 02-412-0090</span>
+                <br/><br/>
+                <span>Copyright © 2019 가락명품공인중개사 All rights reserved.</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

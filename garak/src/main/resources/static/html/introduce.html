@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>가락명품부동산</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/ui.css"/>
+    <style>
+    @font-face {
+        font-family: 'LotteMartDream';
+        font-style: normal;
+        font-weight: 200;
+        src: url('http://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('http://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+    }
+    .main-wrap .introduce-wrap{width:1100px;min-height:700px;background-color:#fff;display:inline-block;}
+    .main-wrap .introduce-wrap .introduce-button-wrap{width:100%;height:100px;text-align:center;}
+    .main-wrap .introduce-wrap .introduce-button-wrap .introduce-button{width:548px;font-size:20px;padding:20px 0;color:#4c4c4c;float:left;border:1px solid #e6e6e6;}
+    .main-wrap .introduce-wrap .introduce-button-wrap .introduce-button.on{background-color:red;border:1px solid red;color:#fff;font-weight:bold;}
+    .main-wrap .introduce-wrap .introduce-button-wrap .introduce-button:hover{cursor:pointer;font-weight:bold;}
+    .main-wrap .introduce-wrap .company-introduce-wrap{width:100%;min-height:500px;text-align:center;color:black;display:flex;align-items: center;justify-content: center;flex-direction: column;}
+    .main-wrap .introduce-wrap .follow-wrap{width:100%;min-height:500px;text-align:center;color:black;display:none;align-items: center;justify-content: center;flex-direction: column;}
+    .main-wrap .introduce-wrap .follow-wrap .title{font-size:40px;}
+    .main-wrap .introduce-wrap .follow-wrap .desc{font-size:20px;font-weight:300;line-height:40px;padding-top:10px;}
+    .main-wrap .introduce-wrap .follow-wrap .map-info{width:725px;text-align:right;padding:7px 10px;background-color:rgba(0,0,0,0.7);font-size:13px;color:#fff;position:relative;top:-27px;}
+    .main-wrap .introduce-wrap .company-introduce-wrap span{font-size:50px;}
+    .main-wrap .introduce-wrap .company-introduce-wrap .startBtn{width:250px;height:55px;border-radius:25px;background-color:inherit;border:2px solid black;color:black;position:relative;top:20px;font-size:17px;margin-top:150px;font-family:LotteMartDream;}
+    .main-wrap .introduce-wrap .company-introduce-wrap .startBtn:hover{background-color:black;color:#fff;cursor:pointer;}
+    .main-wrap .introduce-wrap .company-introduce-wrap .img{width:100%;height:600px;opacity:0;top:50px;position:relative;}
+    .main-wrap .introduce-wrap .company-introduce-wrap .img img{width:50%;height:100%;}
+    </style>
+    <script type="text/javascript" src="/static/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/static/slick/slick.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easeScroll.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=67zopzwnlj&submodules=geocoder"></script>
+    <script>
+            $(document).ready(function(){
+                $(window).on("scroll",function(){
+                var sct = $(window).scrollTop();
+                    if(sct >= 600){
+                    $("#wrap2-text01").animate({"opacity":"1","top":"10px"},500,function(){
+                        $("#wrap2-text02").animate({"opacity":"1","top":"50px"},500,function(){
+                            $("#wrap2-text03").animate({"opacity":"1","margin-top":"180px"},500,function(){
+                                $("#wrap2-text04").animate({"opacity":"1","height":"302px"},800,function(){
+                                    $('.main-wrap .introduce-wrap .company-introduce-wrap .img').animate({"opacity":"1","top":"0px"},500);
+                                    });
+                                });
+                            });
+                        });
+                    }
+                });
+            });
+            
+    </script>
+    <script>
+    $(document).ready(function() {
+        $(".gnb > li > a").on('mouseover focusin',function(){
+                $(".gnb > li").removeClass("on");
+                $(this).parent("li").addClass("on");
+                $(".submenu").hide();
+			    $(this).next(".submenu").show();
+        });
+        
+        $('.floor-wrap > ul > li ').on('click',function(){
+            $(".floor-wrap > ul > li").removeClass("on");
+            $(this).addClass("on");
+        });
+
+        $(".header, .gnb").on('mouseleave',function(){
+                $(".gnb > li").removeClass("on");
+                $(".submenu").hide();
+        });
+
+        $('.introduce-button').on('click',function(){
+            $('.introduce-button').removeClass("on");
+            $(this).addClass("on");
+            var el = $(this).attr("id");
+            $('.introduce').css('display','none');
+            $('.'+el).css('display','flex');
+            if(el == 'follow-wrap'){
+            $("#wrap2-text01").css({"opacity":"0","top":"150px"});
+            $("#wrap2-text02").css({"opacity":"0","top":"150px"});
+            $("#wrap2-text03").css({"opacity":"0","margin-top":"250px"});
+            $("#wrap2-text04").css({"opacity":"0","height":"0px"});
+            $('.main-wrap .introduce-wrap .company-introduce-wrap .img').css({"opacity":"0","top":"50px"});
+            }else if(el =='company-introduce-wrap'){
+            var sct = $(window).scrollTop();
+                if(sct >= 600){
+                $("#wrap2-text01").animate({"opacity":"1","top":"10px"},500,function(){
+                    $("#wrap2-text02").animate({"opacity":"1","top":"50px"},500,function(){
+                        $("#wrap2-text03").animate({"opacity":"1","margin-top":"180px"},500,function(){
+                            $("#wrap2-text04").animate({"opacity":"1","height":"302px"},800,function(){
+                                $('.main-wrap .introduce-wrap .company-introduce-wrap .img').animate({"opacity":"1","top":"0px"},500);
+                                });
+                            });
+                        });
+                    });
+                }
+            }
+        });
+    });
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="gnb-wrap">
+            <div class="header">
+                    <div class="logo" onclick="window.location='main.html'">
+                    <span class="logo1">가락</span>
+                    <div class="logo2">명품</div>
+                    <span class="logo3">공인중개사</span>
+                    <span class="logo4">412-0090</span>
+                </div>
+                <ul class="gnb">
+                    <li><a href="apart_list.html">아파트</a></li>
+                    <li><a>상가</a></li>
+                    <li><a>조감도/평면도</a>
+                        <div class="submenu">
+                            <ul style="width:120px;text-align:center;">
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a href="birdView.html">조감도</a></li>
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a href="floorView.html">평면도</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a>게시판</a>
+                        <div class="submenu" style="margin-left:-45px;">
+                            <ul style="width:150px;text-align:center;">
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a>매도/매수의뢰</a></li>
+                                <li style="font-size:15px;padding:10px 0px;float:none;" ><a>질문과 답변</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="introduce.html">찾아오는 길</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-visual" style="background-image:url(/static/images/introduce_bg.jpg);">
+            <div class="main-visual-txt" style="opacity:1;">
+                <span style="font-size:50px;color:#fff;font-weight:bold;position:relative;top:-150px;">Introduce</span>
+            </div>
+        </div>
+        <div class="main-wrap" style="position:relative;top:-65px;background-color:inherit;">
+           <div class="introduce-wrap">
+                <div class="introduce-button-wrap">
+                    <div class="introduce-button on" id="company-introduce-wrap">회사소개</div>
+                    <div class="introduce-button" id="follow-wrap">오시는 길</div>
+                </div>
+                <div class="introduce company-introduce-wrap">
+                    <span id="wrap2-text01" style="font-size:55px;opacity:0;position:relative;top:150px;font-family:LotteMartDream;"><span style="color:red">HELIO CITY</span> 전문 부동산</span><br/><br/>
+                    <span id="wrap2-text02" style="font-size:25px;opacity:0;position:relative;top:150px;font-family:LotteMartDream;">
+                        강남 위에서 9,510세대 대도시를 만나다<br/>
+                        아이파크, 힐스테이트, 래미안이 만드는 송파 헬리오시티!<br/>
+                        서울의 프리미엄을 바꿉니다.<br/></span>
+
+                    <input id="wrap2-text03" style="opacity: 0;margin-top:250px;" type="button" class="startBtn" value="412-0090"><br/>
+                    <div id="wrap2-text04" style="width:1px;height:0px;opacity:0; border-left:1px solid black;display:inline-block;"></div>    
+                    </span>
+                    <div class="img">
+                      <img src="/static/images/introduce_1.jpg"/><img src="/static/images/introduce_2.jpg"/>
+                    </div>
+                </div>
+                <div class="introduce follow-wrap">
+                   <span class="title">가락명품공인중개사에 오신 것을 환영합니다.</span><br/>
+                   <span class="desc">저희 가락명품공인은 송파구 송파대로 345, 001A동 1015호에 위치해 있으며<br/>
+                        송파헬리오시티 전문 부동산으로써<br/>
+                        조합원입주권, 분양권을 전문으로 중개하는 공인중개사사무소입니다.<br/><br/>
+                        고객님의 소중한 재산을 중개함에 있어 신속하고 정확한 판단으로<br/>
+                        고객님의 이익에 부합하도록  최선의 노력을 다하고 있습니다.<br/>
+                        계약이 이루어 진 후에도 사후 서비스에 불편함이 없도록 최선을 다 할 것입니다.<br/><br/>
+                        늘 고객님께 친절하고 성실한  가락명품공인중개사로 기억되고 싶습니다.<br/>
+                        감사합니다.<br/><br/>
+                    </span>
+                    <img src="/static/images/info_map.PNG"/>
+                    <div class="map-info">주소 : 서울시 송파구 송파대로 345, 001A동 1015호 Tel.02-412-0090</div>
+                </div>
+           </div>
+        </div>
+         <div class="footer">
+            <div class="linked-wrap">
+                <div class="linked-box">
+                    <a href="https://www.hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index.xml" target="blank"><img src="/static/images/footer1.jpg"/></a>
+                    <a href="http://www.minwon.go.kr/main?a=AA020InfoMainApp" target="blank"><img src="/static/images/footer2.png"/></a>
+                    <a href="http://rt.molit.go.kr/" target="blank"><img src="/static/images/footer3.jpg"/></a>
+                </div>
+            </div>
+            <div style="width:1100px;margin-bottom:20px;display:inline-block;text-align:center;">
+                <div class="logo" style="float:none;display:inline-block;cursor:auto;">
+                    <span class="logo1" style="color:#fff;">가락</span>
+                    <div class="logo2" style="background-color:white;color:#4c4c4c;">명품</div>
+                    <span class="logo3"  style="color:#fff;">공인중개사</span>
+                    <span class="logo4"  style="color:#4c4c4c;background-color:#fff;">412-0090</span>
+                </div>
+            </div>
+            <div class="footer-wrap">
+                <span>상호명 : 가락명품공인중개사</span><div class="separator"></div>
+                <span>대표자 : 정미희</span><div class="separator"></div>
+                <span>사업자등록번호 : 213-10-61287</span><div class="separator"></div>
+                <span>부동산등록번호 : 11710-2015-00091</span><br/><br/>
+                <span>주소 : 서울특별시 송파구 송파대로 345, 001A동1015호(가락동,헬리오시티상가)</span><div class="separator"></div>
+                <span>전화번호 : 02-412-0090</span>
+                <br/><br/>
+                <span>Copyright © 2019 가락명품공인중개사 All rights reserved.</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

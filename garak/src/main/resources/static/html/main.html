@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>가락명품부동산</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/ui.css"/>
+    <script type="text/javascript" src="/static/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/static/slick/slick.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easeScroll.js"></script>
+    <script>
+            $(document).ready(function(){
+                var scrollFl = false;
+                $('.recent-wrap').slick({
+                dots: true,
+                arrows : false,
+                infinite: false,
+                speed: 500,
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                autoplay: false,
+                });
+            });
+            
+    </script>
+    <script>
+    $(document).ready(function() {
+        $(".gnb > li > a").on('mouseover focusin',function(){
+                $(".gnb > li").removeClass("on");
+                $(this).parent("li").addClass("on");
+                $(".submenu").hide();
+			    $(this).next(".submenu").show();
+        });
+
+        $(".header, .gnb").on('mouseleave',function(){
+                $(".gnb > li").removeClass("on");
+                $(".submenu").hide();
+        });
+        show();
+     function show(){
+        $("#desc1").animate({"opacity":"1","left":"0px"},1500,function(){
+                $("#desc2").animate({"opacity":"1","left":"0px"},1500,function(){
+                });
+            });
+            setTimeout(function(){
+                $("#desc1").animate({"opacity":"0","left":"-100px"},500);
+                $("#desc2").animate({"opacity":"0","left":"-100px"},500);
+            },5000);
+        setInterval(function(){
+            $("#desc1").animate({"opacity":"1","left":"0px"},1500,function(){
+                $("#desc2").animate({"opacity":"1","left":"0px"},1500,function(){
+                });
+            });
+            setTimeout(function(){
+                $("#desc1").animate({"opacity":"0","left":"-100px"},500);
+                $("#desc2").animate({"opacity":"0","left":"-100px"},500);
+            },5000);
+        },7000);
+        }
+    
+    });
+   
+   function fnCalc(arg){
+       var el = $(arg).parent().find(".size #size-data");
+       var data = el.html();
+       var dataFl = el.attr("flag");
+
+       if(dataFl == 1){
+           data = Math.round(data/3.3);
+           el.attr("flag","2");
+           el.html(data);
+           $(arg).parent().find(".size #size-unit").html("평");
+       }else{
+           data = data * 3.3;
+           el.attr("flag","1");
+           el.html(data);
+           $(arg).parent().find(".size #size-unit").html("㎡");
+       }
+
+   }
+    </script>
+   
+</head>
+<body>
+    <div class="wrap">
+        <div class="gnb-wrap">
+            <div class="header">
+                <div class="logo" onclick="window.location='main.html'">
+                    <span class="logo1">가락</span>
+                    <div class="logo2">명품</div>
+                    <span class="logo3">공인중개사</span>
+                    <span class="logo4">412-0090</span>
+                </div>
+                <ul class="gnb">
+                    <li><a href="apart_list.html">아파트</a></li>
+                    <li><a>상가</a></li>
+                    <li><a>조감도/평면도</a>
+                        <div class="submenu">
+                            <ul style="width:120px;text-align:center;">
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a href="birdView.html">조감도</a></li>
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a href="floorView.html">평면도</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a>게시판</a>
+                        <div class="submenu" style="margin-left:-45px;">
+                            <ul style="width:150px;text-align:center;">
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a>매도/매수의뢰</a></li>
+                                <li style="font-size:15px;padding:10px 0px;float:none;" ><a>질문과 답변</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="introduce.html">찾아오는 길</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-visual">
+            <div class="main-visual-txt">
+                <div style="text-align:left;">
+                    <span class="desc" id="desc1">HELIO CITY</span><br/>
+                    <span class="desc" id="desc2">PREMIUM APARTMENT</span>
+                </div>
+            </div>
+        </div>
+        <div class="main-wrap">
+            <div class="Theme">
+                <span class="Theme-desc">
+                    <select class="search-select">
+                        <option>매물번호</option>
+                        <option>제목</option>
+                        <option>지역</option>
+                    </select> 
+                    <input type="text" class="search-input" placeholder="매물번호,제목,지역 등을 입력해주세요."/>
+                    <span class="btntype1"><a>검색</a></span>
+                </span>
+                <br/><br/><br/>
+                <div class="Theme-box" style="background-image:url('/static/images/ico_thema2.gif')">
+                    <div class="Theme-box-desc">원룸형</div>
+                </div>
+                <div class="Theme-box"  style="background-image:url('/static/images/ico_thema1.gif')">
+                    <div class="Theme-box-desc">보증금 1,000만원 이하</div>
+                </div>
+                <div class="Theme-box"  style="background-image:url('/static/images/ico_thema3.gif')">
+                    <div class="Theme-box-desc">전세 2억 이하</div>
+                </div>
+                <div class="Theme-box"  style="background-image:url('/static/images/ico_thema4.gif')">
+                    <div class="Theme-box-desc">역세권 인접</div>
+                </div>
+                <div class="Theme-box"  style="background-image:url('/static/images/ico_thema6.gif')">
+                    <div class="Theme-box-desc">통베란다</div>
+                </div>
+                <div class="Theme-box"  style="background-image:url('/static/images/ico_thema5.gif')">
+                    <div class="Theme-box-desc">오피스텔</div>
+                </div>
+                <div class="Theme-box"  style="background-image:url('/static/images/ico_thema7.gif')">
+                    <div class="Theme-box-desc">풀옵션</div>
+                </div>
+                <div class="Theme-box"  style="background-image:url('/static/images/ico_thema8.gif')">
+                    <div class="Theme-box-desc">학교인접</div>
+                </div>
+            </div>
+            <div class="recent-board">
+                <div class="recent-desc">최근 <span>업데이트</span> 매물</div>
+                <br/><br/><br/>
+                <div class="recent-wrap">
+                    <div class="recent-box">
+                        <div class="tag-wrap">
+                            <div class="tag new">최신매물</div>
+                            <div class="tag recommand">추천매물</div>
+                        </div>
+                        <img class="recent-image" src="/static/images/ico_thema2.gif"/>
+                        <div class="title">헬리오시티</div>
+                        <div class="description"> 
+                            <span class="description-text">
+                                <span class="address">송파동</span>
+                                <span>|</span>
+                                <span class="size"><span id="size-data" flag="1">138.38</span><span id="size-unit" flag="1">㎡</span></span>
+                            </span>
+                            <img src="/static/images/calculator.png" onclick="fnCalc(this)"/>
+                        </div>
+                        <div class="price-wrap">
+                            <div class="price-desc">
+                                <span class="price-tag PT01">매매</span>
+                                <span class="price-unit">억원</span>
+                                <span class="price">15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent-box">
+                        <div class="tag-wrap">
+                            <div class="tag new">최신매물</div>
+                            <div class="tag subway">역세권</div>
+                        </div>
+                        <img class="recent-image" src="/static/images/ico_thema2.gif"/>
+                        <div class="title">헬리오시티</div>
+                        <div class="description">
+                            <span class="description-text">
+                                <span class="address">송파동</span>
+                                <span>|</span>
+                                <span class="size"><span id="size-data" flag="1">138.38</span><span id="size-unit" flag="1">㎡</span></span>
+                            </span>
+                            <img src="/static/images/calculator.png" onclick="fnCalc(this)"/>
+                        </div>
+                        <div class="price-wrap">
+                            <div class="price-desc">
+                                <span class="price-tag PT02">보증금</span>
+                                <span class="price-unit">만원</span>
+                                <span class="price">1,000</span>
+                            </div>
+                            <div class="price-desc">
+                                <span class="price-tag PT03">임대료</span>
+                                <span class="price-unit">만원</span>
+                                <span class="price">49</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent-box">
+                        <div class="tag-wrap">
+                            <div class="tag new">최신매물</div>
+                            <div class="tag best">인기매물</div>
+                        </div>
+                        <img class="recent-image" src="/static/images/ico_thema2.gif"/>
+                        <div class="title">헬리오시티</div>
+                        <div class="description">
+                            <span class="description-text">
+                                 <span class="address">송파동</span>
+                                 <span>|</span>
+                                 <span class="size"><span id="size-data" flag="1">138.38</span><span id="size-unit" flag="1">㎡</span></span>
+                             </span>
+                            <img src="/static/images/calculator.png" onclick="fnCalc(this)"/>
+                        </div>
+                        <div class="price-wrap">
+                            <div class="price-desc">
+                                <span class="price-tag PT04">전세금</span>
+                                <span class="price-unit">억원</span>
+                                <span class="price">7</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent-box">
+                        <div class="tag-wrap">
+                            <div class="tag new">최신매물</div>
+                             <div class="tag best">인기매물</div>
+                        </div>
+                        <img class="recent-image" src="/static/images/ico_thema2.gif"/>
+                        <div class="title">헬리오시티</div>
+                        <div class="description">
+                            <span class="description-text">
+                                <span class="address">송파동</span>
+                                <span>|</span>
+                                <span class="size"><span id="size-data" flag="1">138.38</span><span id="size-unit" flag="1">㎡</span></span>
+                            </span>
+                            <img src="/static/images/calculator.png" onclick="fnCalc(this)"/>
+                        </div>
+                        <div class="price-wrap">
+                            <div class="price-desc">
+                                <span class="price-tag PT04">전세금</span>
+                                <span class="price-unit">억원</span>
+                                <span class="price">6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-box">
+                            <div class="tag-wrap">
+                                <div class="tag new">최신매물</div>
+                                <div class="tag recommand">추천매물</div>
+                            </div>
+                            <img class="recent-image" src="/static/images/ico_thema2.gif"/>
+                            <div class="title">헬리오시티</div>
+                            <div class="description"> 
+                                <span class="description-text">
+                                    <span class="address">송파동</span>
+                                    <span>|</span>
+                                    <span class="size"><span id="size-data" flag="1">138.38</span><span id="size-unit" flag="1">㎡</span></span>
+                                </span>
+                                <img src="/static/images/calculator.png" onclick="fnCalc(this)"/>
+                            </div>
+                            <div class="price-wrap">
+                                <div class="price-desc">
+                                    <span class="price-tag PT01">매매</span>
+                                    <span class="price-unit">억원</span>
+                                    <span class="price">15</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recent-box">
+                            <div class="tag-wrap">
+                                <div class="tag new">최신매물</div>
+                                <div class="tag subway">역세권</div>
+                            </div>
+                            <img class="recent-image" src="/static/images/ico_thema2.gif"/>
+                            <div class="title">헬리오시티</div>
+                            <div class="description">
+                                <span class="description-text">
+                                    <span class="address">송파동</span>
+                                    <span>|</span>
+                                    <span class="size"><span id="size-data" flag="1">138.38</span><span id="size-unit" flag="1">㎡</span></span>
+                                </span>
+                                <img src="/static/images/calculator.png" onclick="fnCalc(this)"/>
+                            </div>
+                            <div class="price-wrap">
+                                <div class="price-desc">
+                                    <span class="price-tag PT02">보증금</span>
+                                    <span class="price-unit">만원</span>
+                                    <span class="price">1,000</span>
+                                </div>
+                                <div class="price-desc">
+                                    <span class="price-tag PT03">임대료</span>
+                                    <span class="price-unit">만원</span>
+                                    <span class="price">49</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recent-box">
+                            <div class="tag-wrap">
+                                <div class="tag new">최신매물</div>
+                                <div class="tag best">인기매물</div>
+                            </div>
+                            <img class="recent-image" src="/static/images/ico_thema2.gif"/>
+                            <div class="title">헬리오시티</div>
+                            <div class="description">
+                                <span class="description-text">
+                                     <span class="address">송파동</span>
+                                     <span>|</span>
+                                     <span class="size"><span id="size-data" flag="1">138.38</span><span id="size-unit" flag="1">㎡</span></span>
+                                 </span>
+                                <img src="/static/images/calculator.png" onclick="fnCalc(this)"/>
+                            </div>
+                            <div class="price-wrap">
+                                <div class="price-desc">
+                                    <span class="price-tag PT04">전세금</span>
+                                    <span class="price-unit">억원</span>
+                                    <span class="price">7</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recent-box">
+                            <div class="tag-wrap">
+                                <div class="tag new">최신매물</div>
+                                 <div class="tag best">인기매물</div>
+                            </div>
+                            <img class="recent-image" src="/static/images/ico_thema2.gif"/>
+                            <div class="title">헬리오시티</div>
+                            <div class="description">
+                                <span class="description-text">
+                                    <span class="address">송파동</span>
+                                    <span>|</span>
+                                    <span class="size"><span id="size-data" flag="1">138.38</span><span id="size-unit" flag="1">㎡</span></span>
+                                </span>
+                                <img src="/static/images/calculator.png" onclick="fnCalc(this)"/>
+                            </div>
+                            <div class="price-wrap">
+                                <div class="price-desc">
+                                    <span class="price-tag PT04">전세금</span>
+                                    <span class="price-unit">억원</span>
+                                    <span class="price">6</span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+         <div class="footer">
+            <div class="linked-wrap">
+                <div class="linked-box">
+                    <a href="https://www.hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index.xml" target="blank"><img src="/static/images/footer1.jpg"/></a>
+                    <a href="http://www.minwon.go.kr/main?a=AA020InfoMainApp" target="blank"><img src="/static/images/footer2.png"/></a>
+                    <a href="http://rt.molit.go.kr/" target="blank"><img src="/static/images/footer3.jpg"/></a>
+                </div>
+            </div>
+            <div style="width:1100px;margin-bottom:20px;display:inline-block;text-align:center;">
+                <div class="logo" style="float:none;display:inline-block;cursor:auto;">
+                    <span class="logo1" style="color:#fff;">가락</span>
+                    <div class="logo2" style="background-color:white;color:#4c4c4c;">명품</div>
+                    <span class="logo3"  style="color:#fff;">공인중개사</span>
+                    <span class="logo4"  style="color:#4c4c4c;background-color:#fff;">412-0090</span>
+                </div>
+            </div>
+            <div class="footer-wrap">
+                <span>상호명 : 가락명품공인중개사</span><div class="separator"></div>
+                <span>대표자 : 정미희</span><div class="separator"></div>
+                <span>사업자등록번호 : 213-10-61287</span><div class="separator"></div>
+                <span>부동산등록번호 : 11710-2015-00091</span><br/><br/>
+                <span>주소 : 서울특별시 송파구 송파대로 345, 001A동1015호(가락동,헬리오시티상가)</span><div class="separator"></div>
+                <span>전화번호 : 02-412-0090</span>
+                <br/><br/>
+                <span>Copyright © 2019 가락명품공인중개사 All rights reserved.</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

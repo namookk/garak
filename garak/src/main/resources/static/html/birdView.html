@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>가락명품부동산</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/ui.css"/>
+    <style>
+   .main-wrap .bird-wrap{width:1100px;min-height:600px;background-color:#fff;display:inline-block;}
+   .main-wrap .bird-wrap .bird-desc{width:100%;height:600px;}
+   .main-wrap .bird-wrap .bird-desc .bird-img{width:50%;height:100%;float:left;opacity:0;position:relative;top:100px;}
+   .main-wrap .bird-wrap .bird-desc .bird-img img{width:100%;margin-top:100px;}
+   .main-wrap .bird-wrap .bird-desc .bird-text{width:50%;height:100%;float:left;opacity:0;position:relative;top:100px;text-align:center;display:flex;justify-content: center;align-items: center;flex-direction: column;}
+   .main-wrap .bird-wrap .bird-desc .bird-text span{color:#5c5c5c;font-size:14px;font-weight:bold;}
+   .main-wrap .bird-wrap .bird-desc .bird-text .title{font-size:25px;color:black;}
+   .main-wrap .bird-wrap .bird-desc .bird-text .title span{color:red;font-size:25px;}
+    </style>
+    <script type="text/javascript" src="/static/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/static/slick/slick.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easeScroll.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        $(".gnb > li > a").on('mouseover focusin',function(){
+                $(".gnb > li").removeClass("on");
+                $(this).parent("li").addClass("on");
+                $(".submenu").hide();
+			    $(this).next(".submenu").show();
+        });
+        
+        $('.floor-wrap > ul > li ').on('click',function(){
+            $(".floor-wrap > ul > li").removeClass("on");
+            $(this).addClass("on");
+        });
+
+        $(".header, .gnb").on('mouseleave',function(){
+                $(".gnb > li").removeClass("on");
+                $(".submenu").hide();
+        });
+        $(window).on("scroll",function(){
+        var sct = $(window).scrollTop();
+        var bird1Top = $('#bird1').offset().top - 500;
+        var bird2Top = $('#bird2').offset().top - 500;
+        var bird3Top = $('#bird3').offset().top - 500;
+        var bird4Top = $('#bird4').offset().top - 500;
+        var bird5Top = $('#bird5').offset().top - 500;
+        var bird6Top = $('#bird6').offset().top - 500;
+
+        if(sct >= bird1Top && sct < bird2Top){
+            $("#bird1_1").animate({"opacity":"1","top":"0"},500,function(){
+                $("#bird1_2").animate({"opacity":"1","top":"0"},500);
+            });
+        }
+        if(sct >= bird2Top && sct < bird3Top){
+            $("#bird2_2").animate({"opacity":"1","top":"0"},500,function(){
+                $("#bird2_1").animate({"opacity":"1","top":"0"},500);
+            });
+        }
+        if(sct >=bird3Top && sct < bird4Top){
+            $("#bird3_1").animate({"opacity":"1","top":"0"},500,function(){
+                $("#bird3_2").animate({"opacity":"1","top":"0"},500);
+            });
+        }
+        if(sct >=bird4Top && sct < bird5Top){
+            $("#bird4_2").animate({"opacity":"1","top":"0"},500,function(){
+                $("#bird4_1").animate({"opacity":"1","top":"0"},500);
+            });
+        }
+        if(sct >=bird5Top && sct < bird6Top){
+            $("#bird5_1").animate({"opacity":"1","top":"0"},500,function(){
+                $("#bird5_2").animate({"opacity":"1","top":"0"},500);
+            });
+        }
+        if(sct >= bird6Top){
+            $("#bird6_2").animate({"opacity":"1","top":"0"},500,function(){
+                $("#bird6_1").animate({"opacity":"1","top":"0"},500);
+            });
+        }
+    });
+        show();
+     function show(){
+        $("#desc1").animate({"opacity":"1","left":"0px"},1500,function(){
+                $("#desc2").animate({"opacity":"1","left":"0px"},1500,function(){
+                });
+            });
+            setTimeout(function(){
+                $("#desc1").animate({"opacity":"0","left":"-100px"},500);
+                $("#desc2").animate({"opacity":"0","left":"-100px"},500);
+            },5000);
+        setInterval(function(){
+            $("#desc1").animate({"opacity":"1","left":"0px"},1500,function(){
+                $("#desc2").animate({"opacity":"1","left":"0px"},1500,function(){
+                });
+            });
+            setTimeout(function(){
+                $("#desc1").animate({"opacity":"0","left":"-100px"},500);
+                $("#desc2").animate({"opacity":"0","left":"-100px"},500);
+            },5000);
+        },7000);
+        }
+    
+    });
+    </script>
+   
+</head>
+<body>
+    <div class="wrap">
+        <div class="gnb-wrap">
+            <div class="header">
+                    <div class="logo" onclick="window.location='main.html'">
+                    <span class="logo1">가락</span>
+                    <div class="logo2">명품</div>
+                    <span class="logo3">공인중개사</span>
+                    <span class="logo4">412-0090</span>
+                </div>
+                <ul class="gnb">
+                    <li><a href="apart_list.html">아파트</a></li>
+                    <li><a>상가</a></li>
+                    <li><a>조감도/평면도</a>
+                        <div class="submenu">
+                            <ul style="width:120px;text-align:center;">
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a href="birdView.html">조감도</a></li>
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a href="floorView.html">평면도</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a>게시판</a>
+                        <div class="submenu" style="margin-left:-45px;">
+                            <ul style="width:150px;text-align:center;">
+                                <li style="font-size:15px;padding:10px 0px;float:none;"><a>매도/매수의뢰</a></li>
+                                <li style="font-size:15px;padding:10px 0px;float:none;" ><a>질문과 답변</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="introduce.html">찾아오는 길</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-visual" style="background-image:url(/static/images/bird/bg.jpg);background-size:100% 850px;height:850px;">
+            <div class="main-visual-txt">
+                <div style="text-align:left;">
+                    <span class="desc" id="desc1">HELIO CITY</span><br/>
+                    <span class="desc" id="desc2">PREMIUM APARTMENT</span>
+                </div>
+            </div>
+        </div>
+        <div class="main-wrap">
+            <div class="bird-wrap">
+                <div class="bird-desc" id="bird1">
+                    <div class="bird-img" id="bird1_1">
+                        <img src="/static/images/bird/bird_1.jpg">
+                    </div>
+                    <div class="bird-text" id="bird1_2">
+                        <span class="title">한 발 더 먼저 만나보세요!<br>지구를 아끼는 <span>친환경의 모든 기술</span></span><br/>
+                        <span>친환경 스마트 기술로 관리비는 줄고 지구는 아껴줍니다.<br/>
+                            아파트 곳곳에서 쓰여지는 태양과 빗물까지 에너지 절감 아파트를 넘어 <br/>생태 아파트로 거듭납니다.
+                        </span>
+                    </div>
+                </div>
+                <div class="bird-desc" id="bird2">
+                    <div class="bird-text" id="bird2_1">
+                        <span class="title"><span>단열재</span>사용</span><br/>
+                        <span>친환경 주택성능평가를 만족하는 단열재 적용
+                        </span>       
+                    </div>
+                    <div class="bird-img" id="bird2_2">
+                        <img src="/static/images/bird/bird_2.jpg">
+                    </div>
+                </div>
+                <div class="bird-desc" id="bird3">
+                    <div class="bird-img" id="bird3_1">
+                            <img src="/static/images/bird/bird_3.jpg">
+                    </div>
+                    <div class="bird-text" id="bird3_2">
+                        <span class="title"><span>신재생에너지</span>활용</span><br/>
+                        <span>태양광 적용으로 CO<sub>2</sub>절감 및 화석연료 절약
+                        </span>                   
+                     </div>
+                </div>
+                <div class="bird-desc" id="bird4">
+                    <div class="bird-text" id="bird4_1">
+                        <span class="title"><span>친환경</span>자재 및 시설</span><br/>
+                        <span>유해물질 차단, 실내공기질의 개선으로 더 건강한 삶
+                        </span>       
+                    </div>
+                    <div class="bird-img" id="bird4_2">
+                        <img src="/static/images/bird/bird_4.jpg">
+                    </div>
+                </div>
+                <div class="bird-desc" id="bird5">
+                    <div class="bird-img" id="bird5_1">
+                        <img src="/static/images/bird/bird_5.jpg">
+                    </div>
+                    <div class="bird-text" id="bird5_2">
+                        <span class="title"><span>빗물 재처리</span>설비 시스템</span><br/>
+                        <span>우수를 조경용수 등으로 활용, 수자원 절감 및 홍수대비
+                        </span>       
+                    </div>
+                </div>
+                <div class="bird-desc" id="bird6">
+                    <div class="bird-text" id="bird6_1">
+                            <span class="title"><span>에너지</span>절전 조명</span><br/>
+                            <span>감지센서 조명을 계단실, 세대 현관 등에 설치
+                            </span>       
+                    </div>
+                    <div class="bird-img" id="bird6_2">
+                        <img src="/static/images/bird/bird_6.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="footer">
+            <div class="linked-wrap">
+                <div class="linked-box">
+                    <a href="https://www.hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index.xml" target="blank"><img src="/static/images/footer1.jpg"/></a>
+                    <a href="http://www.minwon.go.kr/main?a=AA020InfoMainApp" target="blank"><img src="/static/images/footer2.png"/></a>
+                    <a href="http://rt.molit.go.kr/" target="blank"><img src="/static/images/footer3.jpg"/></a>
+                </div>
+            </div>
+            <div style="width:1100px;margin-bottom:20px;display:inline-block;text-align:center;">
+                <div class="logo" style="float:none;display:inline-block;cursor:auto;">
+                    <span class="logo1" style="color:#fff;">가락</span>
+                    <div class="logo2" style="background-color:white;color:#4c4c4c;">명품</div>
+                    <span class="logo3"  style="color:#fff;">공인중개사</span>
+                    <span class="logo4"  style="color:#4c4c4c;background-color:#fff;">412-0090</span>
+                </div>
+            </div>
+            <div class="footer-wrap">
+                <span>상호명 : 가락명품공인중개사</span><div class="separator"></div>
+                <span>대표자 : 정미희</span><div class="separator"></div>
+                <span>사업자등록번호 : 213-10-61287</span><div class="separator"></div>
+                <span>부동산등록번호 : 11710-2015-00091</span><br/><br/>
+                <span>주소 : 서울특별시 송파구 송파대로 345, 001A동1015호(가락동,헬리오시티상가)</span><div class="separator"></div>
+                <span>전화번호 : 02-412-0090</span>
+                <br/><br/>
+                <span>Copyright © 2019 가락명품공인중개사 All rights reserved.</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
