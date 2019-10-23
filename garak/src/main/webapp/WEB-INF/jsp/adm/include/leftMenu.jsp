@@ -87,11 +87,7 @@ function fnClose(menuCd){
                     <div class="sub-depth-box active"></div>
                 </li>
                 <li>
-                    <a id="AA0102" url="/adm/product/edit">매물등록</a>
-                    <div class="sub-depth-box"></div>
-                </li>
-                <li>
-                    <a id="AA0103">매물일괄등록</a>
+                    <a id="AA0102">매물일괄등록</a>
                     <div class="sub-depth-box"></div>
                 </li>
             </ul>
