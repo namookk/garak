@@ -23,7 +23,7 @@
 <body>
 	<div class="gnb-wrap">
          <div class="header">
-             <div class="logo" onclick="window.location='main.html'">
+             <div class="logo" onclick="window.location='/'">
                  <span class="logo1">가락</span>
                  <div class="logo2">명품</div>
                  <span class="logo3">공인중개사</span>

@@ -1,9 +1,9 @@
 package com.garak.floorview;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class FloorViewController {
 	
 	@RequestMapping("/floorView/view")
