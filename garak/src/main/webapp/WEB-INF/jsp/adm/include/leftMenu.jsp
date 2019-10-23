@@ -3,7 +3,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<jsp:include page="../include/head.jsp"></jsp:include>
 <script>
 $(document).ready(function(){
     $(".sub-depth-wrap > li > a").on('mouseover focusin',function(){
@@ -25,6 +24,7 @@ $(document).ready(function(){
        $(this).siblings("div").addClass("active");
 
        var menuCd = $(this).attr("id");
+       var url = $(this).attr("url");
        var menuNm = $(this).html();
        if($('#tab-'+menuCd).length > 0){     //이미 탭이 열려있음
            $('.tab > ul > li').removeClass("on");
@@ -33,18 +33,21 @@ $(document).ready(function(){
            $('#content-'+menuCd).addClass("on");
        }else{                               //탭이 안열려있음
         $('.tab > ul > li').removeClass("on");
-        var html ='<div class="content-wrap on" id="content-'+menuCd+'">';
-        html += '<!DOCTYPE html>';
-        html += '    <html>';
-        html += '    <head>';
-        html += '    </head>';
-        html += '    <body>';
-        html +=         menuCd;
-        html += '    </body>';
-        html += '    </html>';
-        html += ' </div>';
-        $('.content-wrap').removeClass("on");
-        $('.main').append(html);
+        $.ajax({  
+		   type: "POST",  
+		   dataType: "HTML",  
+		   url: url,  
+		   success: function(data) {
+			   var html ='<div class="content-wrap on" id="content-'+menuCd+'">';
+               	   html += data;
+                   html += ' </div>';
+		        $('.content-wrap').removeClass("on");
+		        $('.main').append(html);
+			},
+			error: function(e){
+				alert("error");
+			}
+		});
         html = ' <li id="tab-'+menuCd+'" class="on" onclick="fnOpen(\''+menuCd+'\');">'+menuNm+'<span class="xBtn" onclick="fnClose(\''+menuCd+'\')">x</span></li>';
         $('.tab > ul').append(html);
        }
@@ -80,15 +83,11 @@ function fnClose(menuCd){
             <p class="sub-title"><a>매물관리</a></p>
             <ul class="sub-depth-wrap">
                 <li>
-                    <a class="active" id="AA0101">매물리스트</a>
+                    <a class="active" id="AA0101" url="/adm/product/list">매물리스트</a>
                     <div class="sub-depth-box active"></div>
                 </li>
                 <li>
-                    <a id="AA0102">매물등록</a>
-                    <div class="sub-depth-box"></div>
-                </li>
-                <li>
-                    <a id="AA0103">매물일괄등록</a>
+                    <a id="AA0102">매물일괄등록</a>
                     <div class="sub-depth-box"></div>
                 </li>
             </ul>
@@ -100,6 +99,13 @@ function fnClose(menuCd){
                 </li>
                 <li>
                     <a id="AA0202">인기매물리스트</a>
+                    <div class="sub-depth-box"></div>
+                </li>
+            </ul>
+            <p class="sub-title"><a>단지관리</a></p>
+            <ul class="sub-depth-wrap">
+                <li>
+                    <a id="AA0301" url="/adm/development/list">단지리스트</a>
                     <div class="sub-depth-box"></div>
                 </li>
             </ul>
