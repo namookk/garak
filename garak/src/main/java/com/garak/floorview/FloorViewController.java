@@ -1,4 +1,5 @@
 package com.garak.floorview;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,31 +27,17 @@ public class FloorViewController extends CommonSupport  {
 		try {
 			
 			HashMap<String, Object> jsonMap = new HashMap<String, Object>();
-			HashMap<String, Object> locationMap = new HashMap<String, Object>();
-			HashMap<String, Object> locationMap2 = new HashMap<String, Object>();
-			HashMap<String, Object> locationMap3 = new HashMap<String, Object>();
 			List<HashMap<String, Object>> prdList = new ArrayList<HashMap<String,Object>>();
 			
-			//seq를 받아서 seq와 매핑되는 데이터를 가지고 옴
-			
-			locationMap.put("development","A매물");
-			locationMap.put("letitude","29");
-			locationMap.put("longtitude","0");
-			
-			prdList.add(locationMap);
-			
-			locationMap2.put("development","B매물");
-			locationMap2.put("letitude","29");
-			locationMap2.put("longtitude","50");
-			
-			prdList.add(locationMap2);
-			
-			locationMap3.put("development","C매물");
-			locationMap3.put("letitude","58");
-			locationMap3.put("longtitude","50");
-			
-			prdList.add(locationMap3);
-			
+			for(int i = 0 ; i < 10; i++) {
+				HashMap<String, Object> locationMap = new HashMap<String, Object>();
+				
+				locationMap.put("매물","매물"+i);
+				locationMap.put("letitude",i*i+30);
+				locationMap.put("longtitude",i*i+50);
+				
+				prdList.add(locationMap);
+			}
 			jsonMap.put("prdList", prdList);
 			
 			super.responseJSON(jsonMap, response);

@@ -33,73 +33,40 @@
                 var HOME_PATH = window.HOME_PATH || '.';
                 var MARKER_SPRITE_X_OFFSET = 29,
                     MARKER_SPRITE_Y_OFFSET = 50;
-                var MARKER_SPRITE_POSITION = {"A0": [0, 0]};
+//                 var MARKER_SPRITE_POSITION ;
                 
-                function selectDevelopmentSeq(seq){
-                    
-                    $.ajax({
-                		type : "post",
-                		url : "/floorView/prdPerDevelopment",
-                		data : seq,
-                		error:function(e) {
-                			alert("error : 정보를 가지고 오는데 실패했습니다.");
-                		},
-                		success:function(data){
-                		
-                			var sdata = JSON.parse(data);
-                			var prdList = sdata.prdList;
-                			if(prdList != null){
-               					for(var i = 0; i < prdList.length ; i++){
-	               					alert(prdList[i].development+" / " + prdList[i].letitude + " / " + prdList[i].longtitude);
-	               					
-	               					var str = prdList[i].development +": [" + prdList[i].letitude +","+ prdList[i].longtitude + "]";
-	               					if(prdList.length -1 != i){
-	               						str = ",";
-	               					}
-               					}
-                			}
-//                 			MARKER_SPRITE_POSITION = {str};
-							MARKER_SPRITE_POSITION = {
-	                            "A0": [0, 0],
-	                            "B0": [MARKER_SPRITE_X_OFFSET, 0],
-	                            "C0": [MARKER_SPRITE_X_OFFSET*2, 0],
-	                            "D0": [MARKER_SPRITE_X_OFFSET*3, 0]
-							
-	                		};
-                		}
-                	});
-                }
-                	MARKER_SPRITE_POSITION = {
-                            "A0": [0, 0],
-                            "B0": [MARKER_SPRITE_X_OFFSET, 0],
-                            "C0": [MARKER_SPRITE_X_OFFSET*2, 0],
-                            "D0": [MARKER_SPRITE_X_OFFSET*3, 0],
-                            "E0": [MARKER_SPRITE_X_OFFSET*4, 0],
-                            "F0": [MARKER_SPRITE_X_OFFSET*5, 0],
-                            "G0": [MARKER_SPRITE_X_OFFSET*6, 0],
-                            "H0": [MARKER_SPRITE_X_OFFSET*7, 0],
-                            "I0": [MARKER_SPRITE_X_OFFSET*8, 0],
+               
+//                 	MARKER_SPRITE_POSITION = {
+//                             "A0": [0, 0],
+//                             "B0": [MARKER_SPRITE_X_OFFSET, 0],
+//                             "C0": [MARKER_SPRITE_X_OFFSET*2, 0],
+//                             "D0": [MARKER_SPRITE_X_OFFSET*3, 0],
+//                             "E0": [MARKER_SPRITE_X_OFFSET*4, 0],
+//                             "F0": [MARKER_SPRITE_X_OFFSET*5, 0],
+//                             "G0": [MARKER_SPRITE_X_OFFSET*6, 0],
+//                             "H0": [MARKER_SPRITE_X_OFFSET*7, 0],
+//                             "I0": [MARKER_SPRITE_X_OFFSET*8, 0],
 
-                            "A1": [0, MARKER_SPRITE_Y_OFFSET],
-                            "B1": [MARKER_SPRITE_X_OFFSET, MARKER_SPRITE_Y_OFFSET],
-                            "C1": [MARKER_SPRITE_X_OFFSET*2, MARKER_SPRITE_Y_OFFSET],
-                            "D1": [MARKER_SPRITE_X_OFFSET*3, MARKER_SPRITE_Y_OFFSET],
-                            "E1": [MARKER_SPRITE_X_OFFSET*4, MARKER_SPRITE_Y_OFFSET],
-                            "F1": [MARKER_SPRITE_X_OFFSET*5, MARKER_SPRITE_Y_OFFSET],
-                            "G1": [MARKER_SPRITE_X_OFFSET*6, MARKER_SPRITE_Y_OFFSET],
-                            "H1": [MARKER_SPRITE_X_OFFSET*7, MARKER_SPRITE_Y_OFFSET],
-                            "I1": [MARKER_SPRITE_X_OFFSET*8, MARKER_SPRITE_Y_OFFSET],
+//                             "A1": [0, MARKER_SPRITE_Y_OFFSET],
+//                             "B1": [MARKER_SPRITE_X_OFFSET, MARKER_SPRITE_Y_OFFSET],
+//                             "C1": [MARKER_SPRITE_X_OFFSET*2, MARKER_SPRITE_Y_OFFSET],
+//                             "D1": [MARKER_SPRITE_X_OFFSET*3, MARKER_SPRITE_Y_OFFSET],
+//                             "E1": [MARKER_SPRITE_X_OFFSET*4, MARKER_SPRITE_Y_OFFSET],
+//                             "F1": [MARKER_SPRITE_X_OFFSET*5, MARKER_SPRITE_Y_OFFSET],
+//                             "G1": [MARKER_SPRITE_X_OFFSET*6, MARKER_SPRITE_Y_OFFSET],
+//                             "H1": [MARKER_SPRITE_X_OFFSET*7, MARKER_SPRITE_Y_OFFSET],
+//                             "I1": [MARKER_SPRITE_X_OFFSET*8, MARKER_SPRITE_Y_OFFSET],
 
-                            "A2": [0, MARKER_SPRITE_Y_OFFSET*2],
-                            "B2": [MARKER_SPRITE_X_OFFSET, MARKER_SPRITE_Y_OFFSET*2],
-                            "C2": [MARKER_SPRITE_X_OFFSET*2, MARKER_SPRITE_Y_OFFSET*2],
-                            "D2": [MARKER_SPRITE_X_OFFSET*3, MARKER_SPRITE_Y_OFFSET*2],
-                            "E2": [MARKER_SPRITE_X_OFFSET*4, MARKER_SPRITE_Y_OFFSET*2],
-                            "F2": [MARKER_SPRITE_X_OFFSET*5, MARKER_SPRITE_Y_OFFSET*2],
-                            "G2": [MARKER_SPRITE_X_OFFSET*6, MARKER_SPRITE_Y_OFFSET*2],
-                            "H2": [MARKER_SPRITE_X_OFFSET*7, MARKER_SPRITE_Y_OFFSET*2],
-                            "I2": [MARKER_SPRITE_X_OFFSET*8, MARKER_SPRITE_Y_OFFSET*2]
-                        };
+//                             "A2": [0, MARKER_SPRITE_Y_OFFSET*2],
+//                             "B2": [MARKER_SPRITE_X_OFFSET, MARKER_SPRITE_Y_OFFSET*2],
+//                             "C2": [MARKER_SPRITE_X_OFFSET*2, MARKER_SPRITE_Y_OFFSET*2],
+//                             "D2": [MARKER_SPRITE_X_OFFSET*3, MARKER_SPRITE_Y_OFFSET*2],
+//                             "E2": [MARKER_SPRITE_X_OFFSET*4, MARKER_SPRITE_Y_OFFSET*2],
+//                             "F2": [MARKER_SPRITE_X_OFFSET*5, MARKER_SPRITE_Y_OFFSET*2],
+//                             "G2": [MARKER_SPRITE_X_OFFSET*6, MARKER_SPRITE_Y_OFFSET*2],
+//                             "H2": [MARKER_SPRITE_X_OFFSET*7, MARKER_SPRITE_Y_OFFSET*2],
+//                             "I2": [MARKER_SPRITE_X_OFFSET*8, MARKER_SPRITE_Y_OFFSET*2]
+//                         };
 //                 }
                 var map = new naver.maps.Map('map', {
                     center: new naver.maps.LatLng(letitude, longtitude),
@@ -115,35 +82,57 @@
                 var markers = [],
                     infoWindows = [];
 
-                
-                for (var key in MARKER_SPRITE_POSITION) {
-
-                    var position = new naver.maps.LatLng(
-                        southWest.lat() + latSpan * Math.random(),
-                        southWest.lng() + lngSpan * Math.random());
-
-                    var marker = new naver.maps.Marker({
-                        map: map,
-                        position: position,
-                        title: key,
-                        icon: {
-                            url: HOME_PATH +'/img/example/sp_pins_spot_v3.png',
-                            size: new naver.maps.Size(24, 37),
-                            anchor: new naver.maps.Point(12, 37),
-                            origin: new naver.maps.Point(MARKER_SPRITE_POSITION[key][0], MARKER_SPRITE_POSITION[key][1])
-                        },
-                        zIndex: 100
-                    });
-
-                    var infoWindow = new naver.maps.InfoWindow({
-                        content: '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'+ key.substr(0, 1) +'"</b>.</div>'
-                    });
-
-                    markers.push(marker);
-                    infoWindows.push(infoWindow);
-                };
-				
-             
+ 				function selectDevelopmentSeq(seq){
+                    $.ajax({
+                		type : "post",
+                		url : "/floorView/prdPerDevelopment",
+                		data : seq,
+                		error:function(e) {
+                			alert("error : 정보를 가지고 오는데 실패했습니다.");
+                		},
+                		success:function(data){
+                			if(0 < markers.length){
+                				for(var i = 0; i < markers.length ; i++){
+                					var marker = markers[i];
+	                				hideMarker(map, marker);
+                				}
+                			}
+                			
+                			var sdata = JSON.parse(data);
+                			var prdList = sdata.prdList;
+                			
+                			if(prdList != null){
+               					for(var i = 0; i < prdList.length ; i++){
+               						
+               						var position = new naver.maps.LatLng(
+               		                        southWest.lat() + latSpan * Math.random(),
+               		                        southWest.lng() + lngSpan * Math.random());
+               		
+           		                  	var marker = new naver.maps.Marker({
+           		                        map: map,
+           		                        position: position,
+           		                        title: prdList[i].prdList,
+           		                        icon: {
+           		                            url: HOME_PATH +'/img/example/sp_pins_spot_v3.png',
+           		                            size: new naver.maps.Size(24, 37),
+           		                            anchor: new naver.maps.Point(12, 37),
+           		                            origin: new naver.maps.Point(prdList[i].letitude, prdList[i].longtitude)
+           		                        },
+           		                        zIndex: 100
+           		                    });
+           		
+           		                    var infoWindow = new naver.maps.InfoWindow({
+           		                        content: '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'+ prdList[i].prdList +'"</b>.</div>'
+           		                    });
+           		                    
+           		                    markers.push(marker);
+           		                    infoWindows.push(infoWindow);
+               					}
+                			}
+                		}
+                	});
+                }
+ 				
                 naver.maps.Event.addListener(map, 'idle', function() {
                     updateMarkers(map, markers);
                 });
@@ -167,13 +156,13 @@
                 }
 
                 function showMarker(map, marker) {
-
+                	console.log(marker.setMap());
                     if (marker.setMap()) return;
                     marker.setMap(map);
                 }
 
                 function hideMarker(map, marker) {
-
+					console.log(marker.setMap());
                     if (!marker.setMap()) return;
                     marker.setMap(null);
                 }
@@ -194,6 +183,7 @@
 
                 for (var i=0, ii=markers.length; i<ii; i++) {
                     naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+                    alert();
                 }
             });
             
