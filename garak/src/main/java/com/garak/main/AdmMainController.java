@@ -15,4 +15,9 @@ public class AdmMainController {
 	public String goAdmMain(Model model){
 		return "adm/main/main";
 	}
+	
+	@RequestMapping("/adm/main/tab")
+	public String goAdmMainTab(Model model) {
+		return "adm/main/mainTab";
+	}
 }

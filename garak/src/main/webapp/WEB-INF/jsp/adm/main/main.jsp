@@ -4,6 +4,21 @@
 <html>
 <head>
 <jsp:include page="../include/head.jsp"></jsp:include>
+<script>
+$(document).ready(function(){
+	$.ajax({
+		url : "/adm/main/tab",
+		dataType : "HTML",
+		type: "POST",
+		success:function(html){
+			$('#content-main').html(html);
+		},
+		error : function(e){
+			alert("error");
+		}
+	});
+});
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -17,14 +32,6 @@
             </div>
             <div class="main">
                 <div class="content-wrap on" id="content-main">
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                    </head>
-                    <body>
-                        <div style="height:1100px;">메인</div>
-                    </body>
-                    </html>
                 </div>
        		 </div>
    		 </div>

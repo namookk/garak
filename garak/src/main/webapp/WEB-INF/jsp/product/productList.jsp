@@ -116,7 +116,7 @@
                     <input type="text" class="search-input" placeholder="매물번호,제목,지역"/>
                     <img src="/static/images/search.png"/>
                 </div>
-				<div class="list-box" onclick="fnMarker('헬리오시티 213동')">
+				<div class="list-box" onclick="window.location='/product/view'">
                     <div class="list-desc">
                         <img class="list-img" src="/static/images/ico_thema3.gif"/>
                         <div class="price-wrap">

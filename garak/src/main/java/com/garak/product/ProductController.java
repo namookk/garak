@@ -12,4 +12,9 @@ public class ProductController {
 		return "product/productList";
 	}
 	
+	@RequestMapping("/product/view")
+	public String goProductView(Model model){
+		return "product/productView";
+	}
+	
 }
